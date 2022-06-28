@@ -5,6 +5,8 @@ COPY . .
 RUN npm install --prod
 RUN npm run build
 
+expose 80
 #nginx
 FROM nginx:stable-alpine
 COPY --from=build /app/build/* /usr/share/nginx/html/*
+CMD ["node","App.js"]
